@@ -60,6 +60,7 @@ class Renderer {
     var ctx = this.rendertarget.getContext("2d");
     ctx.clearRect(0, 0, this.rendertarget.width, this.rendertarget.height)
     ctx.drawImage(element, 0, 0, rendertarget.width, rendertarget.height)
+    element.remove();
     if (mainloop != undefined) {
       mainloop(frame, fps); // THIS IS AN EVENT!!
       rendertarget.getContext("2d").clearRect(0, 0, rendertarget.width, rendertarget.height);
