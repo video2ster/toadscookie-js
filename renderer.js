@@ -22,14 +22,14 @@ class Renderer {
       this.maincanvas.style.display = "none";
       this.maincanvas.width = width;
       this.maincanvas.height = height;
-    this.maincontext = maincanvas.getContext("2d"); // sorry, starfox.js enjoyers
+    this.maincontext = this.maincanvas.getContext("2d");
       this.maincontext.imageSmoothingEnabled = false; // nice pixel art scaling
     
     // set up the render target canvas
     this.rendertarget = document.createElement("canvas"); // this scales stuff up
       this.rendertarget.width = width;
       this.rendertarget.height = height;
-    this.rendercontext = rendercanvas.getContext("2d");
+    this.rendercontext = this.rendercanvas.getContext("2d");
       this.rendercontext.imageSmoothingEnabled = false; // nice pixel art scaling
       
     // fps management
