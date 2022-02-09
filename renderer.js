@@ -38,7 +38,7 @@ class Renderer {
     
     this.timerID = window.setInterval(function renderer() {
       this.frame++;
-      mainloop_render(this.frame, this.fps);
+      this.mainloop_render(this.frame, this.fps);
       if (this.frame == this.fps) {
         this.frame = 0;
       }
