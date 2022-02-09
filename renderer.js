@@ -37,12 +37,12 @@ class Renderer {
     this.fps = fps;
     
     this.timerID = window.setInterval(function renderer() {
-      frame++;
-      mainloop_render(frame, fps);
-      if (frame == fps) {
-        frame = 0;
+      this.frame++;
+      mainloop_render(this.frame, this.fps);
+      if (this.frame == this.fps) {
+        this.frame = 0;
       }
-    }, 1000 / fps);
+    }, 1000 / this.fps);
   }
   
   noMainloopAlert() {
@@ -57,13 +57,12 @@ class Renderer {
     // make an <img> with the main canvas as it's image
     var element = document.createElement("img");
     element.src = this.maincanvas.toDataURL("image/png");
-    var ctx = this.rendertarget.getContext("2d");
-    ctx.clearRect(0, 0, this.rendertarget.width, this.rendertarget.height)
-    ctx.drawImage(element, 0, 0, rendertarget.width, rendertarget.height)
+    this.rendercontext.clearRect(0, 0, this.rendertarget.width, this.rendertarget.height)
+    this.rendercontext.drawImage(element, 0, 0, rendertarget.width, rendertarget.height)
     element.remove();
     if (mainloop != undefined) {
       mainloop(frame, fps); // THIS IS AN EVENT!!
-      rendertarget.getContext("2d").clearRect(0, 0, rendertarget.width, rendertarget.height);
+      this.rendercontext.clearRect(0, 0, rendertarget.width, rendertarget.height);
       drawToRT(this.maincanvas, this.rendertarget);
     } else {
       this.noMainloopAlert();
