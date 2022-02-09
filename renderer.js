@@ -29,7 +29,7 @@ class Renderer {
     this.rendertarget = document.createElement("canvas"); // this scales stuff up
       this.rendertarget.width = width;
       this.rendertarget.height = height;
-    this.rendercontext = this.rendercanvas.getContext("2d");
+    this.rendercontext = this.rendertarget.getContext("2d");
       this.rendercontext.imageSmoothingEnabled = false; // nice pixel art scaling
       
     // fps management
