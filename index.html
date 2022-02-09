@@ -1,0 +1,15 @@
+<script src="renderer.js"></script>
+<script src="sprites.js"></script>
+<body>
+  <script>
+    // initialize a new renderer that runs at SNES resolution and scales up to 640x480
+    var mainRenderer = new Renderer(256,224,640,480,60);
+    document.getElementsByTagName("center")[0].appendChild(mainRenderer.rendertarget); // embed render target
+    mainRenderer.mainloop = function(frame,fps) {
+      this.maincontext.fillRect(0,0,16,16);
+    }
+  </script>
+  <center>
+    <h1>You should see a square!</h1>
+  </center>
+</body>
