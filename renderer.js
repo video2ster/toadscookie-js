@@ -5,13 +5,22 @@
 */
 
 class Renderer {
-  /*
-    Renderer constructor
-    width   : original width.
-    height  : original height.
-    rwidth  : scaled width. (essentially a scaled version of the original)
-    rheight : scaled height. (see above)
-  */
+  mainloop_render(frame, fps) {
+    // make an <img> with the main canvas as it's image
+    var element = document.createElement("img");
+    element.src = this.maincanvas.toDataURL("image/png");
+    this.rendercontext.clearRect(0, 0, this.rendertarget.width, this.rendertarget.height)
+    this.rendercontext.drawImage(element, 0, 0, rendertarget.width, rendertarget.height)
+    element.remove();
+    if (mainloop != undefined) {
+      mainloop(frame, fps); // THIS IS AN EVENT!!
+      this.rendercontext.clearRect(0, 0, rendertarget.width, rendertarget.height);
+      drawToRT(this.maincanvas, this.rendertarget);
+    } else {
+      this.noMainloopAlert();
+    }
+  }
+ 
   constructor(width, height, rwidth, rheight, fps) {
     // set basic size variables
     this.width = width;
@@ -53,19 +62,5 @@ class Renderer {
     }
   }
   
-  mainloop_render(frame, fps) {
-    // make an <img> with the main canvas as it's image
-    var element = document.createElement("img");
-    element.src = this.maincanvas.toDataURL("image/png");
-    this.rendercontext.clearRect(0, 0, this.rendertarget.width, this.rendertarget.height)
-    this.rendercontext.drawImage(element, 0, 0, rendertarget.width, rendertarget.height)
-    element.remove();
-    if (mainloop != undefined) {
-      mainloop(frame, fps); // THIS IS AN EVENT!!
-      this.rendercontext.clearRect(0, 0, rendertarget.width, rendertarget.height);
-      drawToRT(this.maincanvas, this.rendertarget);
-    } else {
-      this.noMainloopAlert();
-    }
-  }
+  
 }
